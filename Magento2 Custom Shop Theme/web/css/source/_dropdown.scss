@@ -1,0 +1,95 @@
+.search-cart {
+    .dropdown-menu {
+        transform: translate(-7%, 40px) !important;
+        padding: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            border-color: transparent transparent #d6665a transparent;
+            border-style: solid;
+            border-width: 5px;
+            height: 0;
+            width: 0;
+            top: -10px;
+            right: 15px;
+        }
+    }
+
+    .block.block-search {
+        padding: 8px !important;
+        width: auto !important;
+        margin-left: 0 !important;
+
+        border-top: 3px solid #d6665a;
+    }
+
+    &-mobile {
+        .block-search .action.search:before {
+            width: 40px;
+            font-size: 24px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: inherit;
+            color: #d6665a;
+            content: '\f818';
+            font-family: 'porto-icons';
+            margin: 0;
+            vertical-align: top;
+            display: inline-block !important;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+
+        .dropdown-menu:before {
+            right: 67px;
+        }
+    }
+
+    .form {
+        &.minisearch {
+            .search-category {
+                display: none;
+            }
+
+            .actions {
+                display: none;
+            }
+        }
+
+        &.minisearch-mobile {
+            display: flex;
+
+            .field.search {
+                width: 260px;
+                display: block;
+            }
+
+            .actions {
+                .action.search {
+                    position: relative;
+                    right: 0;
+                    &:before {
+                        color: #d6665a;
+                    }
+                }
+            }
+        }
+
+        #search,
+        #search-mobile{
+            border-radius: 0 !important;
+            border: 1px solid grey;
+        }
+    }
+}
+
+@media (min-width: 825px) {
+    .search-cart-mobile {
+        .dropdown-menu:before {
+            right: 75px;
+        }
+    }
+}

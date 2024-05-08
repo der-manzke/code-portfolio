@@ -1,0 +1,68 @@
+.box-teaser {
+    background-image: url("../images/bg-infoblock.png");
+    border: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    margin: 0 15px 20px;
+    overflow: hidden;
+    padding-top: 20px;
+
+    h3 {
+        background-color: #dc9b74;
+        color: #fff;
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: 20px;
+        padding: 2px 0;
+        text-align: center;
+        font-family: "Bebas Neue", serif;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .inhalt {
+        margin: 0 14px 14px;
+        background-color: white;
+        padding: 20px;
+        height: 211px;
+        position: relative;
+
+        p strong {
+            font-family: "FuturaPT Bold", Helvetica, sans-serif;
+        }
+
+        p a {
+            background-color: #d6665a;
+            border-radius: 4px;
+            color: white;
+            display: inline-block;
+            margin-bottom: 4px;
+            margin-right: 8px;
+            padding: 2px 8px;
+            text-decoration: none;
+            transition: background 200ms ease-in-out;
+        }
+
+        .bottom {
+            bottom: 1em;
+            left: 0;
+            margin: 0 1em;
+            position: absolute;
+            right: 0;
+
+            .button {
+                background-color: #75a48b;
+                border-radius: 3px;
+                box-sizing: border-box;
+                color: #fff;
+                display: inline-block;
+                font: 14px/21px "FuturaPT Bold", Helvetica, sans-serif;
+                line-height: 38px;
+                padding: 0 16px;
+                text-decoration: none;
+                transition: background 200ms ease-in-out;
+                white-space: nowrap;
+            }
+        }
+    }
+}

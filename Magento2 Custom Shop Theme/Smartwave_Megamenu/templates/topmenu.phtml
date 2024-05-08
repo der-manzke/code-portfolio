@@ -1,0 +1,91 @@
+<?php
+/**
+ * Copyright © 2018 Porto. All rights reserved.
+ */
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Smartwave\Megamenu\Block\Topmenu
+ */
+?>
+<?php
+$_helper = $this->helper('Smartwave\Megamenu\Helper\Data');
+$_config = $_helper->getConfig('sw_megamenu');
+$columnsLimit = 0;
+$header_type = $_helper->getConfig('porto_settings/header/header_type');
+
+if($_config['general']['enable']) {
+    ?>
+    <?php $_menu = $block->getMegamenuHtml(); ?>
+
+    <nav class="navigation sw-megamenu d-none d-lg-block <?php if($header_type == 8 || $header_type == 10): ?>side-megamenu<?php endif; ?>" role="navigation">
+        <ul>
+            <?php echo $_menu; ?>
+            <li class="level0 level-top ui-menu-item">
+                <a href="<?php echo $this->getBaseUrl()."fragen"; ?>" class="level-top ui-corner-all"  role="menuitem">
+                    <span><?php echo __("Fragen")?></span>
+                </a>
+            </li>
+            <li class="level0 level-top ui-menu-item">
+                <a href="<?php echo $this->getBaseUrl()."ueber-uns"; ?>" class="level-top ui-corner-all"  role="menuitem">
+                    <span><?php echo __("Über uns")?></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="navbar d-block d-lg-none bg-body-tertiary p-0">
+        <div class="container-fluid p-0 d-block">
+            <div class="navigation" id="navbarNavDropdown">
+                <ul class="navbar-nav small-menu">
+                    <?php echo $_menu; ?>
+                    <li class="nav-item">
+                        <a href="<?php echo $this->getBaseUrl()."fragen"; ?>" class="nav-link"  role="menuitem">
+                            <span><?php echo __("Fragen")?></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo $this->getBaseUrl()."ueber-uns"; ?>" class="nav-link"  role="menuitem">
+                            <span><?php echo __("Über uns")?></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'Smartwave_Megamenu/js/sw_megamenu'
+        ], function ($) {
+            $(".sw-megamenu").swMegamenu();
+        });
+    </script>
+    <?php
+} else {
+    ?>
+    <?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit); ?>
+
+    <nav class="navigation sw-megamenu" role="navigation">
+        <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+            <?php /* @escapeNotVerified */ echo $_menu; ?>
+            <li class="level0 level-top ui-menu-item">
+                <a href="<?php echo $this->getBaseUrl()."fragen"; ?>" class="level-top ui-corner-all"  role="menuitem">
+                    <span><?php echo __("Fragen")?></span>
+                </a>
+            </li>
+            <li class="level0 level-top ui-menu-item">
+                <a href="<?php echo $this->getBaseUrl()."ueber-uns"; ?>" class="level-top ui-corner-all"  role="menuitem">
+                    <span><?php echo __("Über uns")?></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <?php
+}
+?>

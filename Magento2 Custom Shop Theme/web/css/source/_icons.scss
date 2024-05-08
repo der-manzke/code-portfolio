@@ -1,0 +1,20 @@
+.contact {
+    span:before {
+        display: inline-block;
+        width: 16px;
+    }
+
+    .bi {
+        &:before {
+            padding-right: 2rem;
+        }
+    }
+}
+
+.porto-icon-search:before {
+    color: #d6665a;
+}
+
+.action.showcart:before {
+    color: #d6665a !important;
+}

@@ -1,0 +1,18 @@
+﻿<script>
+	function up(obj, max) {
+		var nrInput = $(obj).parent().parent().find("input")[0];
+		nrInput.value = parseInt(nrInput.value) + 1;
+		if (nrInput.value >= parseInt(max)) {
+			nrInput.value = max;
+		}
+		setDirty(true);
+	}
+	function down(obj, min) {
+		var nrInput = $(obj).parent().parent().find("input")[0];
+		nrInput.value = parseInt(nrInput.value) - 1;
+		if (nrInput.value <= parseInt(min)) {
+			nrInput.value = min;
+		}
+		setDirty(true);
+	}
+</script>

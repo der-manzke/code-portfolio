@@ -1,0 +1,195 @@
+@model Models.Custom.CustomViewModel
+@using Models.Device;
+@{
+	ViewData["Title"] = _t.T("Custom_edit");
+}
+
+
+<div class="row pt-5">
+	<h2 class="pb-5">@_t.T("Custom_edit")</h2>
+	<form asp-controller="Custom" asp-action="Edit" method="post" class="Custom-edit" enctype="multipart/form-data" id="form">
+		<div class="row col-12">
+			<div class="col-12 col-md-3 order-md-first order-last">
+				@Html.Partial("ImageUpload/ImageUpload", Model, null)
+			</div>
+
+			<div class="col-12 col-md-9">
+				<div class="col-12 row">
+					<div class="pb-3 col-sm-12 col-md-4">
+						<label for="refcode" class="form-label required">@_t.T("Custom_refcode")</label>
+						<input asp-for="refcode" class="form-control" maxlength="8" type="text" required pattern="[a-zA-Z0-9]{1,8}" />
+					</div>
+					<div class="pb-3 col-sm-12 col-md-4">
+						<label for="title" class="form-label required">@_t.T("Custom_nameLong")</label>
+						<input asp-for="title" class="form-control" max="=255" type="text" required />
+					</div>
+					<div class="pb-3 ps-3 col-sm-12 col-md-4 form-check form-switch">
+						<label for="active" class="form-check-label pb-2 d-block">@_t.T("Custom_visible")</label>
+						<input asp-for="active" type="checkbox" class="form-check-input ms-0 toggle-primary toggle-big" />
+					</div>
+				</div>
+				<div class="col-12 border border-dark container mb-5 py-3">
+					<div class="row">
+						<div class="pb-3 col-sm-12 col-md-12 col-lg-4">
+							<label for="container1Object.type" class="form-label required">@_t.T("Custom_deviceType")</label>
+							<select asp-for="container1Object.containerType" class="form-select" onchange="containerSwitched(this)" required>
+								<option value="" disabled>---</option>
+								@foreach (ContainerViewModel container in (List<ContainerViewModel>)ViewData["Container"])
+								{
+									@if (container.alternativeContainer != null && container.alternativeContainer != "")
+									{
+										<option value="@container.id" data-alternative="@container.alternativeContainer">@_t.T(container.titleKey)</option>
+									}
+									else
+									{
+										<option value="@container.id">@_t.T(container.titleKey)</option>
+									}
+								}
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-xl-7">
+							<div class="row">
+								<div class="col-12 col-md-4">
+									<label for="container1Object.Red">@_t.T("Custom_red")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-red" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container1Object.red" type="number" class="form-control input-number input-red" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-red" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<label for="container1Object.Green">@_t.T("Custom_green")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-green" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container1Object.green" type="number" class="form-control input-number input-green" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-green" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<label for="container1Object.Amber">@_t.T("Custom_amber")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-amber" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container1Object.amber" type="number" class="form-control input-number input-amber" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-amber" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 border border-dark container mb-5 py-3 hidden" id="alternative-container">
+					<div class="row">
+						<div class="pb-3 col-sm-12 col-md-12 col-lg-4">
+							<label for="container2Object.Type" class="form-label">@_t.T("Custom_deviceType")</label>
+							<select asp-for="container2Object.containerType" class="form-select" oninput="altContainerSwitched(this)">
+								<option value="null">---</option>
+								@foreach (ContainerViewModel container in (List<ContainerViewModel>)ViewData["altContainer"])
+								{
+									<option value="@container.id" data-alternative="@container.alternativeContainer">@_t.T(container.titleKey)</option>
+								}
+							</select>
+						</div>
+					</div>
+					<div class="row pb-3">
+						<div class="col-12 col-xl-7">
+							<div class="row">
+								<div class="col-12 col-md-4">
+									<label for="container2Object.Red">@_t.T("Custom_red")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-red" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container2Object.red" type="number" class="form-control input-number input-red" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-red" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<label for="container2Object.Green">@_t.T("Custom_green")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-green" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container2Object.green" type="number" class="form-control input-number input-green" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-green" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<label for="container2Object.Amber">@_t.T("Custom_amber")</label>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-right btn-amber" onclick="down(this, '0')"><span class="bi bi-dash"></span></a>
+										</div>
+										<input asp-for="container2Object.amber" type="number" class="form-control input-number input-amber" max="100" min="0" />
+										<div class="input-group-btn">
+											<a class="btn btn-secondary btn-no-border-left btn-amber" onclick="up(this, '100')"><span class="bi bi-plus"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		@Html.Partial("Button/_BasicControls", null, new ViewDataDictionary(ViewData) { { "btnAction", "Overview" }, { "btnController", "Custom" } })
+		<div class="hidden">
+			@Html.HiddenFor(x => x.id)
+			@Html.HiddenFor(x=> x.customerId)
+			@Html.HiddenFor(x => x.container1)
+			@Html.HiddenFor(x => x.container2)
+			@Html.HiddenFor(x => x.container1Object)
+			@Html.HiddenFor(x => x.container2Object)
+			@Html.HiddenFor(x => x.imageUser)
+			@Html.HiddenFor(x => x.imageGuest)
+		</div>
+	</form>
+</div>
+
+<script>
+	window.addEventListener("load", function () {
+		var container2Id = document.getElementById("container2");
+		var select1 = document.getElementById("container1Object_containerType");
+		var hiddenSelect = document.getElementById("container2Object_containerType");
+		if (container2Id.value) {
+			$("#alternative-container").removeClass("hidden");
+			hiddenSelect.setAttribute("required", "");
+		}
+
+		showAlternative(select1);
+
+		var imageUser = document.getElementById("imageUser");
+		var imageGuest = document.getElementById("imageGuest");
+
+		if (imageUser.value !== '') {
+			document.getElementById('imagePreviewUser').src = imageUser.value;
+			document.getElementById("uploadSymbolUser").classList.add("hidden");
+		}
+		if (imageGuest.value !== '') {
+			document.getElementById('imagePreviewGuest').src = imageGuest.value;
+			document.getElementById("uploadSymbolGuest").classList.add("hidden");
+		}
+
+	});
+</script>
+
+@Html.Partial("JS/InputUpDownJs", null, null)
+@Html.Partial("JS/SliderMaxValueJs", null, null)

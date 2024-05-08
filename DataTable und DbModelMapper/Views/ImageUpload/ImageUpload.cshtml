@@ -1,0 +1,232 @@
+﻿@model Models.Custom.CustomViewModel;
+
+<div class="col-12">
+	<label for="imageUser">@_t.T("Custom_imageUser")</label>
+	<fieldset id="dropZoneUser" class="upload_dropZone text-center mb-3 p-4">
+
+		<legend class="visually-hidden">Image uploader</legend>
+
+		<span id="uploadSymbolUser" class="bi bi-upload h1"></span>
+
+		<div class="image-preview bg-white">
+			<img id="imagePreviewUser" class="image-max" />
+		</div>
+
+		<input asp-for="imageUser" class="hidden" />
+
+		<p class="small my-2">@Html.Raw(_t.T("controls_fileDragDrop"))</p>
+
+		<input asp-for="imageUserFile" class="hidden" type="file" accept="image/jpeg, image/png, image/svg+xml" />
+
+		<label class="btn btn-primary" for="imageUser"><span class="bi bi-paperclip rotate-bef-30"></span>@_t.T("controls_upload")</label>
+
+		<span class="d-block">@Html.Raw(_t.T("controls_fileFormatSize"))</span>
+
+	</fieldset>
+</div>
+<div class="col-12">
+	<label for="imageGuest">@_t.T("Custom_imageCustomer")</label>
+	<fieldset id="dropZoneGuest" class="upload_dropZone text-center mb-0 p-4">
+
+		<legend class="visually-hidden">Image uploader</legend>
+
+		<span id="uploadSymbolGuest" class="bi bi-upload h1"></span>
+
+		<div class="image-preview bg-white">
+			<img id="imagePreviewGuest" class="image-max" />
+		</div>
+
+		<input name="imageGuestBase64" id="imageGuestBase64" class="hidden" />
+
+		<input asp-for="imageGuest" class="hidden" />
+
+		<p class="small my-2">@Html.Raw(_t.T("controls_fileDragDrop"))</p>
+
+		<input asp-for="imageGuestFile" class="hidden" type="file" accept="image/jpeg, image/png, image/svg+xml" />
+
+		<label class="btn btn-primary" for="imageGuest"><span class="bi bi-paperclip rotate-bef-30"></span>@_t.T("controls_upload")</label>
+
+		<span class="d-block">@Html.Raw(_t.T("controls_fileFormatSize"))</span>
+
+	</fieldset>
+	@Html.Partial("ImageUpload/WysiwygModal", Model, new ViewDataDictionary(ViewData) { { "modalTitle", "Kundenbild bearbeiten" }, { "textAreaKey", "imagePreviewGuest"} })
+</div>
+
+<script>
+	// Image Upload
+
+	// DropZones
+	const drZnUser = document.getElementById('dropZoneUser');
+	const drZnGuest = document.getElementById('dropZoneGuest');
+
+	// Upload Buttons
+	const btnUser = document.getElementById('imageUserBtn');
+	const btnGuest = document.getElementById('imageGuestBtn');
+
+	// Upload Symbol
+	const upSymUser = document.getElementById('uploadSymbolUser');
+	const upSymGuest = document.getElementById('uploadSymbolGuest');
+
+	// Uploaded Image
+	const imageUserFile = document.getElementById('imageUserFile');
+	const imageGuestFile = document.getElementById('imageGuestFile');
+
+	// Image Preview
+	const imagePrevUser = document.getElementById('imagePreviewUser');
+	const imagePrevGuest = document.getElementById('imagePreviewGuest');
+
+	addEventListener// Handle file drag & drop
+	function handleDragOver(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		e.dataTransfer.dropEffect = 'copy';
+	}
+
+	// File Upload DE
+	drZnUser.addEventListener('dragover', handleDragOver, false);
+	drZnUser.addEventListener('drop', handleFileSelectUser, false);
+	drZnUser.addEventListener('mousedown', function () {
+		imageUserFile.click();
+	});
+
+	// File Upload EN
+	drZnGuest.addEventListener('dragover', handleDragOver, false);
+	drZnGuest.addEventListener('drop', handleFileSelectGuest, false);
+	drZnGuest.addEventListener('mousedown', function () {
+		imageGuestFile.click();
+	});
+
+	imageUserFile.addEventListener("change", previewImagesUser, false);
+	imageGuestFile.addEventListener("change", previewImagesGuest, false);
+
+	function previewImagesUser() {
+		var fileList = this.files;
+
+		var anyWindow = window.URL || window.webkitURL;
+
+		for (var i = 0; i < fileList.length; i++) {
+			var objectUrl = anyWindow.createObjectURL(fileList[i]);
+			imagePrevUser.src = objectUrl;
+			window.URL.revokeObjectURL(fileList[i]);
+		}
+
+		upSymUser.classList.add("hidden");
+		$("#imageUserFile").trigger('change');
+	}
+
+	function handleFileSelectUser(e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+		var anyWindow = window.URL || window.webkitURL;
+		if (files && files.length > 0) {
+			imageUserFile.files = files;
+			const file = files[0];
+			try {
+				imagePrevUser.src = anyWindow.createObjectURL(file);
+				upSymUser.classList.add("hidden");
+				$("#imageUserFile").trigger('change');
+			} catch (error) {
+				console.error('Error decoding image:', error);
+			}
+		}
+	}
+
+	function previewImagesGuest() {
+		var fileList = this.files;
+
+		var anyWindow = window.URL || window.webkitURL;
+
+		for (var i = 0; i < fileList.length; i++) {
+			var objectUrl = anyWindow.createObjectURL(fileList[i]);
+			imagePrevGuest.src = objectUrl;
+			window.URL.revokeObjectURL(fileList[i]);
+		}
+
+		upSymGuest.classList.add("hidden");
+		$("#imageGuestFile").trigger('change');
+	}
+
+	function handleFileSelectGuest(e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		const files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+		var anyWindow = window.URL || window.webkitURL;
+		if (files && files.length > 0) {
+			imageGuestFile.files = files;
+			const file = files[0];
+			try {
+				imagePrevGuest.src = anyWindow.createObjectURL(file);
+				upSymGuest.classList.add("hidden");
+				$("#imageGuestFile").trigger('change');
+			} catch (error) {
+				console.error('Error decoding image:', error);
+			}
+		}
+	}
+</script>
+
+<script>
+	document.getElementById('imageGuestFile').addEventListener('change', function () {
+		resizeGuestImage(true);
+	});
+
+	document.getElementById('imageUserFile').addEventListener('change', function () {
+		resizeUserImage(true);
+	});
+
+	window.addEventListener('load', function() {
+		resizeGuestImage(false);
+		resizeUserImage(false);
+	});
+	window.addEventListener('resize', function() {
+		resizeGuestImage(false);
+		resizeUserImage(false);
+	});
+
+
+	function resizeGuestImage(triggeredByJs) {
+		let preview = document.getElementById("imagePreviewGuest").parentElement;
+
+		let imgWidth = preview.clientWidth;
+		let image = "@Model?.imageGuest";
+		let childId = preview.firstElementChild.id;
+
+		if (image !== "") {
+			preview.style.height = ((imgWidth * 9) / 16) + "px";
+		} else {
+			preview.style.height = "0px";
+		}
+
+		if (triggeredByJs == true) {
+			preview.style.width = "100%";
+			width = preview.clientWidth;
+
+			preview.style.height = ((width * 9) / 16) + "px";
+		}
+	}
+
+	function resizeUserImage(triggeredByJs) {
+		let preview = document.getElementById("imagePreviewUser").parentElement;
+
+		let imgWidth = preview.clientWidth;
+		let image = "@Model?.imageUser";
+		let childId = preview.firstElementChild.id;
+
+		if (image !== "") {
+			preview.style.height = ((imgWidth * 9) / 16) + "px";
+		} else {
+			preview.style.height = "0px";
+		}
+
+		if (triggeredByJs == true) {
+			preview.style.width = "100%";
+			width = preview.clientWidth;
+
+			preview.style.height = ((width * 9) / 16) + "px";
+		}
+	}
+
+</script>

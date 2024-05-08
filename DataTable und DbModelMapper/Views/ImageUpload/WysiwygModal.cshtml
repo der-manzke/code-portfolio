@@ -1,0 +1,109 @@
+﻿@model Models.Custom.CustomViewModel
+
+@{
+    string modalContent = ViewData["ModalContent"].ToString();
+
+    string summernoteLang = "de-DE";
+    switch (ViewData["CurrentCulture"])
+    {
+        case "DE":
+            summernoteLang = "de-DE";
+            <script src="~/lib/summernote-0.8.18/lang/summernote-de-DE.min.js"></script>
+            break;
+        case "EN":
+            summernoteLang = "en-US";
+            break;
+        case "FR":
+            summernoteLang = "fr-FR";
+            <script src="~/lib/summernote-0.8.18/lang/summernote-fr-FR.min.js"></script>
+            break;
+        case "IT":
+            summernoteLang = "it-IT";
+            <script src="~/lib/summernote-0.8.18/lang/summernote-it-IT.min.js"></script>
+            break;
+    }
+}
+
+<script src="~/lib/html2canvas/html2canvas.min.js"></script>
+
+<a id="imageGuestModalBtn" class="btn btn-primary mx-auto mt-3" data-bs-toggle="modal" data-bs-target="#imageGuestModal">
+    @_t.T("Custom_editor_guest_image")
+</a>
+
+<div class="modal fade" id="imageGuestModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered h-r-30">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">@_t.T("Custom_custom_image")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@_t.T("controls_close")"></button>
+            </div>
+            <div class="modal-body">
+                <textarea name="imageGuestOverride" id="imageGuestOverride"></textarea>
+                <div class="alert alert-info d-flex mt-1 mb-0"><span class="bi bi-info d-flex h1 my-auto"></span>Der aktuelle Ausschnitt wird für das Bild genutzt. Bitte achten Sie darauf, ein Bild im passenden Format (764x418) zu verwenden. Ein grösseres Bild wird entsprechend abgeschnitten.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@_t.T("controls_cancel")</button>
+                <button type="button" id="imageGuestModalSave" class="btn btn-primary ms-5" data-bs-dismiss="modal">@_t.T("controls_save")</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#imageGuestModalBtn').click(function () {
+        if ($('#imagePreviewGuest').prop('src')){
+            if ($('#imageGuestModal').find('.note-editable').html() === "<p><br/></p>") {
+                let imagePath = $('#imagePreviewGuest').prop('src');
+                $('#imageGuestModal').find('.note-editable').html('<p><img src="' + imagePath + '" style="width: 50%;" /></p>');
+            }
+        }
+    });
+
+    $('#imageGuestModalSave').click(function () {
+        var node = $('#imageGuestModal').find('.note-editable')[0];
+
+        setDirty(true);
+
+        html2canvas(node).then(function (canvas) {
+            document.getElementById("uploadSymbolGuest").classList.add("hidden");
+            document.getElementById("imagePreviewGuest").src = canvas.toDataURL();
+            document.getElementById("imageGuestBase64").value = canvas.toDataURL();
+        });
+    });
+
+    $(document).ready(function () {
+        $('#imageGuestOverride').summernote({
+            tabsize: 2,
+            styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'sans-serif'],
+            fontNamesIgnoreCheck: ['EuroliteLT-Ex2', 'UniversLT-57Condensed'],
+            addDefaultFonts: false,
+            followingToolbar: false,
+            height: 418.5,
+            minHeight: 418.5,
+            maxHeight: 418.5,
+            lang: '@summernoteLang',
+            toolbar: [
+                ['style', ['style']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['picture']],
+                ['view', ['codeview', 'help']]
+            ],
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ]
+            }
+        });
+
+        if (('@modalContent' !== null) && ('@modalContent' !== '')) {
+            $('#imageGuestModal').find('.note-editable').html('@Html.Raw(modalContent)');
+        }
+    });
+</script>

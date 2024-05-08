@@ -1,0 +1,249 @@
+.page-header {
+    border-top: none;
+    background: transparent !important;
+
+    .panel.wrapper {
+        background: transparent !important;
+    }
+
+    .header.content {
+        background-color: rgba(217, 207, 176, 0.3);
+        display: flex;
+        max-width: unset;
+
+        .nav {
+            margin-left: 28px;
+
+            .ui-menu-item {
+                margin-right: 50px;
+
+                a {
+                    padding: 0 12px;
+                    color: black;
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
+
+                    &:hover, &:focus, &:active {
+                        color: #d6665a;
+                        text-decoration: none;
+                    }
+
+                    &:after {
+                        content: unset;
+                    }
+
+                    span {
+                        font-size: 24px;
+                        font-weight: 400;
+                    }
+                }
+
+                a.level-top.active {
+                    background-color: rgba(117, 164, 139, .4);
+
+                    &:before, &:after {
+                        content: "";
+                        position: absolute;
+                        top: 4px;
+                        border: 20px solid rgba(117, 164, 139, 0.4);
+                    }
+
+                    &:before {
+                        left: -25px;
+                        border-left: 6px solid transparent;
+                    }
+
+                    &:after {
+                        right: -25px;
+                        border-right: 6px solid transparent;
+                    }
+                }
+            }
+
+            .sw-megamenu.navigation li.level0.fullwidth>.submenu, .sw-megamenu.navigation li.level0.staticwidth>.submenu {
+                border: none;
+                background-image: url("../images/bg-body.png");
+
+                div.container {
+                    --bs-gutter-x: 0;
+                }
+
+                li.ui-menu-item.level1 {
+                    float: none;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 213px;
+                    margin: 0 14px 10px 0;
+
+                    a {
+                        background-color: rgb(255,255,255);
+                        border: 1px solid #ccc;
+                        color: #000;
+                        font-family: "Bebas Neue", sans-serif;
+                        font-size: 30px;
+                        font-weight: 400;
+                        line-height: 74px;
+                        padding: 0 10px;
+                        text-transform: uppercase;
+                        transition: background-color 0.15s ease;
+                        text-decoration: none;
+
+                        &:hover, &:focus, &:active {
+                            text-decoration: none;
+                            color: #d6665a;
+                        }
+
+                        &.active {
+                            background-color: rgba(117, 164, 139, .4);
+                        }
+                    }
+                }
+            }
+
+            @media (min-width: 768px){
+                .sw-megamenu.navigation li.level0.fullwidth>.submenu, .sw-megamenu.navigation li.level0.staticwidth>.submenu {
+                    left: -70%;
+                    width: 1154px;
+                    margin-top: 5px !important;
+                }
+            }
+        }
+    }
+
+    .panel.header {
+        display: flex;
+
+        .contact {
+            color: black;
+        }
+
+        .header.links {
+            display: flex;
+
+            li {
+                list-style: none;
+                padding: 0 1rem;
+                margin: 0;
+                line-height: 10px;
+                border-left: 1px solid #777;
+
+                &:first-child {
+                    border: none !important;
+                }
+
+                a {
+                    color: #777;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .header-logo {
+        position: relative;
+        height: 90px;
+
+        .logo {
+            height: 90px;
+            width: 244px;
+            position: relative;
+            text-decoration: none;
+            vertical-align: middle;
+            float: none;
+            display: inline-block;
+            margin: 0;
+
+            .logo-customtheme {
+                background-image: url("../images/logo-customtheme.png");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                height: 122px;
+                position: absolute;
+                top: -16px;
+                width: 244px;
+                z-index: 2001;
+            }
+        }
+    }
+
+    .search-cart {
+        button {
+            border: none;
+            color: unset;
+            line-height: unset;
+            padding: unset;
+            height: unset;
+            background-color: unset;
+            margin-right: 2rem;
+
+            &.dropdown-toggle::after {
+                content: none;
+            }
+
+            i {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .search-cart-mobile {
+        .minicart-wrapper {
+            margin-top: unset !important;
+        }
+
+        .porto-icon-search:before,
+        .action.showcart:before {
+            color: #613b1b !important;
+        }
+
+        .dropdown-menu {
+            transform: translate(8%, 40px) !important;
+        }
+
+        .field.search {
+            display: flex;
+        }
+
+        .block.block-search {
+            width:300px!important;
+
+            input {
+                position: unset;
+                margin: 0!important;;
+            }
+
+            .label {
+                align-self: center;
+            }
+        }
+    }
+
+    .block-minicart {
+        border-top-color: #d6665a;
+
+        &:before {
+            border-color: transparent transparent #d6665a transparent;
+        }
+    }
+}
+
+@media (min-width: 825px) {
+    .panel.header {
+        .search-cart-mobile {
+            .dropdown-menu {
+                transform: translate(-68%, 40px) !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 381px) {
+    .panel.header {
+        .search-cart-mobile {
+            .dropdown-menu {
+                transform: translate(-70%, 40px) !important;
+            }
+        }
+    }
+}

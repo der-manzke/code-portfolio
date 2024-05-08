@@ -1,0 +1,126 @@
+.footer {
+    font-family: "FuturaPT", sans-serif;
+
+    .links a, .informations a {
+        text-decoration: none !important;
+    }
+
+    .footer-middle {
+        background: radial-gradient(at 50% 0%, #333, #111);
+        padding: 60px 0;
+
+        span.h1 {
+            color: #cccccc !important;
+        }
+
+        .informations {
+            li {
+                width: 50%;
+            }
+        }
+
+        li {
+            line-height: 30px;
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: #d6665a;
+                padding-left: 6px;
+                a {
+                    color: white;
+                }
+            }
+            a {
+                color: #999999;
+                line-height: 30px;
+                display: block;
+                width: 100%;
+            }
+
+            .block-product-link.widget,
+            .block-category-link.widget {
+                margin-bottom: 0;
+                line-height: 30px;
+            }
+        }
+
+        .postfinance, .mastercard, .visa, .twint {
+            width: 66px;
+            height: 39px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .postfinance {
+            background-image: url("../images/assets/apm/postfinance-card.svg");
+        }
+
+        .mastercard {
+            background-image: url("../images/assets/cards/mastercard.svg");
+        }
+
+        .visa {
+            background-image: url("../images/assets/cards/visa.svg");
+        }
+
+        .twint {
+            background-image: url("../images/assets/apm/twint.svg");
+        }
+
+        .printed-in-switzerland {
+            background: url("../images/printed-in-switzerland-logo.png");
+            background-position: left;
+            background-repeat: no-repeat;
+            height: 50px;
+        }
+    }
+
+    .footer-bottom {
+        color: #666;
+    }
+
+    .contact-infos {
+        display: inline-grid;
+        color: white;
+
+        & > span {
+            margin-bottom: 30px;
+        }
+
+        .phone-number {
+            font-family: "FuturaPT Bold", sans-serif;
+            color: #75a48b;
+            font-size: 28px;
+            &:before {
+                padding-right: 14px;
+                font-size: 26px;
+            }
+            margin-bottom: 0;
+        }
+
+        .openings {
+            padding-left: 40px;
+            font-size: 18px;
+        }
+
+        .mail {
+            a {
+                text-decoration: none;
+            }
+
+            &:before {
+                padding-right: 14px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .zahlungen,
+    .printed-in-switzerland {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}

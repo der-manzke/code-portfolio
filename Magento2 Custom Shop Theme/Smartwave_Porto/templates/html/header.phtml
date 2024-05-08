@@ -1,0 +1,158 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+<header class="page-header">
+    <div class="panel wrapper">
+        <div class="panel header py-4 d-flex mb-3 mb-lg-0">
+            <div class="col-12 col-lg-6 contact d-flex justify-content-center justify-content-lg-end align-items-center">
+                <?php echo $this->getChildHtml('store_language') ?>
+                <?php echo $this->getChildHtml('currency') ?>
+                <span data-action="toggle-nav" class="action nav-toggle d-block d-lg-none"><span><?php echo __('Toggle Nav') ?></span></span>
+                <span class="bi bi-telephone-fill px-4">012 123 12 12</span>
+                <span class="bi bi-chat-right-text-fill px-4" onclick="jivo_api.open();" style="cursor: pointer">CHATTEN SIE MIT UNS</span>
+                <div class="search-cart search-cart-mobile d-flex d-lg-none align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-main dropdown-toggle me-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="porto-icon-search"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="block block-search">
+                                <div class="block block-title"><strong>Suche</strong></div>
+                                <div class="block block-content">
+                                    <form class="form minisearch-mobile" id="search_mobile_form" action="/catalogsearch/result/" method="get">
+                                        <div class="field search">
+                                            <div class="control">
+                                                <input id="search-mobile" type="text" name="q" placeholder="Gesamten Shop hier durchsuchen..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button type="submit" title="Suche" class="action search d-block m-0" aria-label="Search">
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-block="minicart" class="minicart-wrapper">
+                        <a class="action showcart" href="/checkout/cart/" data-bind="scope: 'minicart_content'" data-cmp-ab="2">
+                            <span class="text">Cart</span>
+                            <span class="counter qty empty"
+                                  data-bind="css: { empty: !!getCartParam('summary_count') == false && !isLoading() },
+               blockLoader: isLoading">
+            <span class="counter-number">
+                <?php
+                $cart = $objectManager->get("\Magento\Checkout\Model\Cart");
+                echo $cart->getSummaryQty();
+                ?>
+            </span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+                <!-- /ko -->
+            </span>
+        </span>
+                        </a>
+
+                        <script data-cmp-info="6">
+                            window.checkout = {"shoppingCartUrl":"\/checkout\/cart\/","checkoutUrl":"\/checkout\/","updateItemQtyUrl":"\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image_with_borders","baseUrl":"\/","minicartMaxItemsVisible":5,"websiteId":"15","maxItemsToDisplay":10,"storeId":"18","storeGroupId":"14","customerLoginUrl":"\/customer\/account\/login\/referer\/aHR0cHM6Ly9teXByaW50c2hvcC55b3VycHJpbnRzdG9yZS5jaC8%2C\/","isRedirectRequired":false,"autocomplete":"off","captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"\/captcha\/refresh\/","isRequired":false,"timestamp":1713172966}}};
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 d-none d-lg-flex justify-content-center justify-content-lg-end align-items-center">
+                <?php
+                $authorizationLink = $block->getLayout()->createBlock('Magento\Customer\Block\Account\AuthorizationLink');
+
+                if(!$authorizationLink->isLoggedIn()){
+                    echo '<ul class="header links"><li><a href="/customer/account">Mein Konto</a></li><li><a href="/checkout">Checkout</a></li><li><a href="/customer/account/login">Anmelden</a></li><li><a href="/customer/account/create">Registrieren</a></li><li class="d-lg-none"><a href="/checkout/cart">Warenkorb</a></li></ul>';
+                }else{
+                    echo '<ul class="header links"><li><a href="/customer/account">Mein Konto</a></li><li><a href="/checkout">Checkout</a></li><li><a href="/customer/account/logout">Abmelden</a></li><li class="d-lg-none"><a href="/checkout/cart">Warenkorb</a></li></ul>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="header content w-100">
+        <div class="container d-block d-lg-flex">
+            <div class="header-logo col-12 col-lg-3 d-flex justify-content-center">
+                <a href="/" title="customtheme" class="logo d-flex justify-content-center" data-cmp-ab="2">
+                    <div class="logo-customtheme"></div>
+                </a>
+            </div>
+            <div class="nav navbar ms-0 ms-lg-4 col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
+                <?php echo $this->getChildHtml("navigation.sections"); ?>
+            </div>
+            <div class="search-cart col-12 col-lg-2 d-none d-lg-flex align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-main dropdown-toggle me-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="porto-icon-search"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <?php echo $this->getChildHtml("top.search"); ?>
+                    </div>
+                </div>
+                <div data-block="minicart" class="minicart-wrapper">
+                    <a class="action showcart" href="/checkout/cart/" data-bind="scope: 'minicart_content'" data-cmp-ab="2">
+                        <span class="text">Cart</span>
+                        <span class="counter qty empty"
+                              data-bind="css: { empty: !!getCartParam('summary_count') == false && !isLoading() },
+               blockLoader: isLoading">
+            <span class="counter-number">
+                <?php
+                $cart = $objectManager->get("\Magento\Checkout\Model\Cart");
+                echo $cart->getSummaryQty();
+                ?>
+            </span>
+            <span class="counter-label">
+            <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+                <!-- /ko -->
+            </span>
+        </span>
+                    </a>
+
+                    <script data-cmp-info="6">
+                        window.checkout = {"shoppingCartUrl":"\/checkout\/cart\/","checkoutUrl":"\/checkout\/","updateItemQtyUrl":"\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image_with_borders","baseUrl":"\/","minicartMaxItemsVisible":5,"websiteId":"15","maxItemsToDisplay":10,"storeId":"18","storeGroupId":"14","customerLoginUrl":"\/customer\/account\/login\/referer\/aHR0cHM6Ly9teXByaW50c2hvcC55b3VycHJpbnRzdG9yZS5jaC8%2C\/","isRedirectRequired":false,"autocomplete":"off","captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"\/captcha\/refresh\/","isRequired":false,"timestamp":1713172966}}};
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<?php if ($block->isHomePage()): ?>
+    <!-- SCHRITTE -->
+    <section class="schritte d-none d-xl-block">
+        <div class="einleitung">
+            <div class="clearfix">
+                <div class="col-12">
+                    <h2>In vier einfachen Schritten zu Ihrem Druckprodukt</h2>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="col-12">
+                <div class="anleitung d-flex justify-content-center">
+                    <div class="schritt schritt-1"><a href="/produkte.html">Produkt auswählen</a></div>
+                    <div class="schritt schritt-2">Konfigurieren</div>
+                    <div class="schritt schritt-3">Daten hochladen</div>
+                    <div class="schritt schritt-4">Bestellen</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SCHRITTE EOF -->
+    <?= $block->getLayout()->createBlock('Mageplaza\BannerSlider\Block\Widget')->setSliderId(1)->toHtml();?>
+<?php endif ?>

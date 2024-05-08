@@ -1,0 +1,45 @@
+.breadcrumbs {
+    display: none;
+}
+
+footer {
+    position: relative;
+
+    #totop {
+        text-decoration: none;
+        position: fixed;
+        z-index: 100;
+        bottom: 50px;
+        right: 10px;
+        overflow: hidden;
+        width: 56px;
+        height: 56px;
+        border: none;
+        text-indent: -999px;
+        background: #d6665a url("../images/arrow_totop.png") 0 0 no-repeat;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -o-border-radius: 100%;
+        border-radius: 100%;
+    }
+}
+
+#totop {
+    right: unset !important;
+    left: 20px !important;
+    bottom: 20px !important;
+    box-shadow: 0 19px 38px 0 rgba(34,36,43,.3);
+}
+
+.button_d489 {
+    height: 56px !important;
+    width: 56px !important;
+}
+
+.fieldset > .legend {
+    color: #d6665a !important;
+}
+
+a, a:visited {
+    color: #d6665a;
+}

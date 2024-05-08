@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Magento_Checkout/js/view/minicart.js" />
+    </head>
+    <body>
+        <attribute name="id" value="body" />
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="contact-top-header-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">contact</argument>
+                    <argument name="label" xsi:type="string" translate="true">Contact Us</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

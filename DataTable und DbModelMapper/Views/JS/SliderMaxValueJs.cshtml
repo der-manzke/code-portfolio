@@ -1,0 +1,53 @@
+﻿<script>
+	function containerSwitched(obj) {
+		var selected = obj.selectedIndex;
+
+		//alternative container
+		const hiddenSelect = document.getElementById("container2Object_containerType");
+		const container2Id = document.getElementById("container2");
+		if (obj.options[selected].dataset.alternative) {
+			var alts = obj.options[selected].dataset.alternative.split(",")
+			$("#alternative-container").removeClass("hidden");
+			container2Id.value = 0;
+			for (var i = 0; i < hiddenSelect.options.length; i++) {
+				var option = hiddenSelect.options[i];
+				if (option.value === obj.value) {
+					option.style.display = "none";
+				} else {
+					option.style.display = "";
+				}
+			}
+		} else {
+			$("#alternative-container").addClass("hidden");
+			container2Id.value = null;
+			for (var i = 0; i < hiddenSelect.options.length; i++) {
+				hiddenSelect.options[i].style.display = "";
+			}
+		}
+	}
+
+	function showAlternative(obj) {
+		var selected = obj.selectedIndex;
+
+		const hiddenSelect = document.getElementById("container2Object_containerType");
+		const container2Id = document.getElementById("container2");
+		if (obj.options[selected].dataset.alternative) {
+			$("#alternative-container").removeClass("hidden");
+			hiddenSelect.setAttribute("required", "");
+			for (var i = 0; i < hiddenSelect.options.length; i++) {
+				var option = hiddenSelect.options[i];
+				if (option.value === obj.value) {
+					option.style.display = "none";
+				} else {
+					option.style.display = "";
+				}
+			}
+		} else {
+			$("#alternative-container").addClass("hidden");
+			hiddenSelect.removeAttribute("required");
+			for (var i = 0; i < hiddenSelect.options.length; i++) {
+				hiddenSelect.options[i].style.display = "";
+			}
+		}
+	}
+</script>

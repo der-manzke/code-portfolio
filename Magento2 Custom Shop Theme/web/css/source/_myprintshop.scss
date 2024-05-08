@@ -1,0 +1,304 @@
+html, body
+{
+    position: relative;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 16px;
+    background-image: url("../images/bg-body.png");
+    --pq_mainColor: #d6665a;
+
+    .page-main {
+        font-family: "FuturaPT", sans-serif;
+    }
+}
+
+.schritte {
+    background-image: url("../images/bg-title.png");
+    padding-top: 20px;
+}
+
+.schritte.konfigurieren {
+    padding-bottom: 100px;
+}
+
+.schritte .einleitung,
+.cart .title-wrapper .page-title {
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.schritte .einleitung h2,
+.cart .title-wrapper .page-title h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 28px;
+    overflow: hidden;
+    padding: 10px 0;
+    text-shadow: 1px 1px 0 rgba(125, 125, 125, 1);
+}
+
+.schritte .anleitung {
+    margin: 20px auto;
+    /*overflow: hidden;*/
+    position: relative;
+    width: 90%;
+    display: table;
+}
+
+.schritte .schritt {
+    float: left;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 24px;
+    line-height: 72px;
+    text-transform: uppercase;
+    /*width: 25%;*/
+    margin-right: 72px;
+    position: relative;
+}
+
+.schritte .schritt:before {
+    background-image: url("../images/icons/arrow.svg");
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    color: white;
+    content: "1";
+    display: block;
+    float: left;
+    font-size: 32px;
+    font-weight: 700;
+    height: 69px;
+    margin-right: 6px;
+    text-align: center;
+    width: 64px;
+}
+
+.schritte .schritt-1 {
+    a {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+.schritte .schritt-2:before {
+    content: "2";
+}
+
+.schritte .schritt-3:before {
+    content: "3";
+}
+
+.schritte .schritt-4:before {
+    content: "4";
+}
+
+.schritte .anleitung .schritt-1 a:after {
+    -webkit-background-size: 100%;
+    background-image: url("../images/schritt-1-pfeil.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    content: "";
+    display: block;
+    height: 140px;
+    left: 40%;
+    right: 50%;
+    position: absolute;
+    top: -130px;
+    width: 60px;
+    transform: translate(100%, -15%);
+}
+
+.schritte a {
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+
+.schritte a:hover {
+    color: #d6665a;
+}
+
+.schritte .schritt-1:after {
+    -webkit-background-size: 100%;
+    background-image: url("../images/schritt-1-kreis.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: "";
+    display: block;
+    height: 61px;
+    left: 45px;
+    position: absolute;
+    top: 4px;
+    width: 213px;
+    z-index: 1;
+}
+
+@media (max-width: 1200px) {
+    .schritte .schritt-1:after {
+        background-image: none;
+    }
+
+    .schritte .anleitung .schritt-1 a:after {
+        background-image: none;
+    }
+}
+
+.schritte .einleitung h2:before,
+.schritte .einleitung h2:after,
+.cart .title-wrapper .page-title h1:before,
+.cart .title-wrapper .page-title h1:after,
+.page-customtheme .page-title h1:before,
+.page-customtheme .page-title h1:after,
+.product-shop .product-name h1:before,
+.product-shop .product-name h1:after {
+    background-color: black;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 20%;
+}
+
+.schritte .einleitung h2:after,
+.cart .title-wrapper .page-title h1:after,
+.page-customtheme .page-title h1:after,
+.product-shop .product-name h1:after {
+    left: 1em;
+    margin-right: -50%;
+}
+
+.schritte .einleitung h2:before,
+.cart .title-wrapper .page-title h1:before,
+.page-customtheme .page-title h1:before,
+.product-shop .product-name h1:before {
+    right: 1em;
+    margin-left: -50%;
+}
+
+.page-main {
+    padding-top: 0;
+
+    .columns {
+        padding-top: 0;
+    }
+}
+
+.catalog {
+    &-category-page {
+        .page-main {
+            padding-top: 0;
+
+            .columns {
+                padding-top: 20px;
+            }
+        }
+    }
+
+    &-category-view {
+        .page-main {
+            padding-top: 0;
+
+            .columns {
+                padding-top: 20px;
+            }
+        }
+    }
+
+    &-product-page {
+        .page-main {
+            padding-top: 0;
+
+            .columns {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+
+
+
+.page-title-wrapper {
+    background-image: url("../images/bg-title.png");
+    padding: 20px 0 20px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 0;
+    width: 160%;
+    margin-left: -30%;
+    justify-content: center;
+    display: inline-block;
+    font-size: 28px;
+    color: black;
+
+    .page-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px !important;
+        overflow: hidden;
+        padding: 10px 0;
+        color: black !important;
+        text-shadow: 1px 1px 0 rgba(125, 125, 125, 1);
+        background-color: rgba(255,255,255,0.5);
+        text-align: center;
+        margin: 0;
+        width: 100%;
+
+        &:before, &:after {
+            background-color: black;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 25%;
+        }
+
+        &:before {
+            right: 1em;
+            margin-left: -50%;
+        }
+
+        &:after {
+            left: 1em;
+            margin-right: -50%;
+        }
+    }
+}
+
+.account-nav-content .items {
+    display: inline-block;
+}
+
+.messages .message {
+    position: relative;
+    top: 120px;
+}
+
+.login-container,
+.form.password.reset,
+.form.send.confirmation,
+.form.password.forget,
+.form.create.account,
+.form.form-edit-account,
+.form-address-edit,
+.form-newsletter-manage {
+    border-top-color: #d6665a;
+
+    .action.primary {
+        background-color: #75a48b;
+        border-color: #75a48b;
+    }
+}
+
+.dz-default.dz-message {
+    background-color: transparent !important;
+}

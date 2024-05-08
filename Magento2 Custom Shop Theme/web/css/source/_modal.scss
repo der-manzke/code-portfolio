@@ -1,0 +1,59 @@
+.modal-backdrop.fade {
+    display: none;
+}
+
+.modal.fade {
+    background: rgba(125,125,125,.5) !important;
+    .modal-dialog {
+        background: transparent !important;
+        .modal-content {
+            background: white;
+
+            .btn {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.swal2-container {
+    .swal2-icon {
+        width: 3rem;
+        height: 3rem;
+        .swal2-icon-content {
+            font-size: 2.75rem;
+        }
+    }
+    .swal2-content {
+        .swal2-html-container {
+            font-size: 16px;
+        }
+    }
+    .swal2-actions {
+        button {
+            background: #d6665a !important;
+            border-color: #d6665a !important;
+            font-size: 16px;
+            font-family: FuturaPT, Helvetica, Arial, sans-serif;
+            line-height: 1.2;
+            border-radius: 0;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+        }
+    }
+}
+
+.modal-popup {
+    .actoin-accept,
+    .action-dismiss {
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: #d6665a;
+        }
+    }
+    .action-close {
+        &:before {
+            color: #d6665a;
+        }
+    }
+}

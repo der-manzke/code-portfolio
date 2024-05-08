@@ -1,0 +1,23 @@
+.cart.table-wrapper .action-towishlist {
+    display: none;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .cart.table-wrapper .cart tbody td {
+        height:80px;
+    }
+
+    tr {
+        position: relative;
+        td.col.actions {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+        }
+    }
+
+    .cart.table-wrapper .col.qty, .cart.table-wrapper .col.price, .cart.table-wrapper .col.subtotal, .cart.table-wrapper .col.msrp {
+        width: 33.33%
+    }
+}

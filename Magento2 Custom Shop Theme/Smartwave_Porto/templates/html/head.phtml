@@ -1,0 +1,109 @@
+<script type="text/javascript">
+    var porto_config = {
+        paths: {
+            'parallax': 'js/jquery.parallax.min',
+            'owlcarousel': 'owl.carousel/owl.carousel',
+            'owlcarousel_thumbs': 'owl.carousel/owl.carousel2.thumbs',
+            'imagesloaded': 'Smartwave_Porto/js/imagesloaded',
+            'packery': 'Smartwave_Porto/js/packery.pkgd',
+            'floatelement': 'js/jquery.floatelement',
+            'jquery.bootstrap': 'lib/bootstrap-5.3.2/js/bootstrap.bundle.min.js'
+        },
+        shim: {
+            'parallax': {
+                deps: ['jquery']
+            },
+            'owlcarousel': {
+                deps: ['jquery']
+            },
+            'owlcarousel_thumbs': {
+                deps: ['jquery', 'owlcarousel']
+            },
+            'packery': {
+                deps: ['jquery', 'imagesloaded']
+            },
+            'floatelement': {
+                deps: ['jquery']
+            },
+            'jquery.bootstrap': {
+                deps: ['jquery']
+            }
+        }
+    };
+</script>
+
+<script>
+    window.addEventListener("load", (e) => {
+        let path = window.location.href;
+        // because the 'href' property of the DOM element is the absolute path
+
+        let menuItems = document.getElementsByClassName("ui-menu-item level0");
+
+        for (let item of menuItems) {
+            let topMenu = item.getElementsByTagName("a");
+
+            let pathPart = path.split('/')[4];
+
+            if (topMenu[0].href === path) {
+                topMenu[0].classList.add("active");
+            }
+
+            let links = item.lastChild.getElementsByTagName("a");
+            for (let link of links) {
+                let fittinglink = link.href.split('/')[4];
+                if (fittinglink === pathPart && pathPart !== "") {
+                    link.classList.add("active");
+                    topMenu[0].classList.add("active");
+                }
+            }
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+       let submenus = document.getElementsByClassName("submenu");
+       for (menu of submenus){
+           menu.classList.add("container");
+       }
+
+       document.getElementsByClassName("product info detailed")[0].classList.add("container");
+    });
+
+    document.getElementById("product_addtocart_form").on("submit", function () {
+        document.location("/checkout/cart");
+    });
+</script>
+
+<script type="text/javascript">
+    var _iub = _iub || [];
+    _iub.csConfiguration = {
+        "countryDetection":true,
+        "enableFadp":true,
+        "lang":"de",
+        "perPurposeConsent":true,
+        "reloadOnConsent":true,
+        "siteId":3058504,
+        "cookiePolicyId":17614605,
+        "banner":{
+            "acceptButtonCaptionColor":"#FFFFFF",
+            "acceptButtonColor":"#010436",
+            "acceptButtonDisplay":true,
+            "backgroundColor":"#FBF6EF",
+            "closeButtonDisplay":false,
+            "customizeButtonCaptionColor":"#010436",
+            "customizeButtonColor":"#E1DDD7",
+            "customizeButtonDisplay":true,
+            "explicitWithdrawal":true,
+            "listPurposes":true,
+            "logo":null,
+            "position":"bottom",
+            "rejectButtonCaptionColor":"#FFFFFF",
+            "rejectButtonColor":"#010436",
+            "rejectButtonDisplay":true,
+            "showPurposesToggles":true,
+            "theme":"autumn-neutral",
+            "textColor":"#010436"
+        }
+    };
+</script>
+<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3058504.js"></script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>

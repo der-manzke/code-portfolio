@@ -1,0 +1,12 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="lib/bootstrap-5.3.2/css/bootstrap.css" />
+        <css src="lib/icons-1.11.1/font/bootstrap-icons.css" />
+        <css src="css/custom.css" />
+
+        <link src="lib/bootstrap-5.3.2/js/bootstrap.bundle.js" />
+        <link src=""/>
+
+        <remove src="//fonts.googleapis.com/css?family=Shadows+Into+Light" />
+    </head>
+</page>
