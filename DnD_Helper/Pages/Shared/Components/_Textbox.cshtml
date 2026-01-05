@@ -1,0 +1,3 @@
+﻿@model dnd_helper.Pages.Shared.Components.Models.TextBox
+
+<textarea class="form-control @String.Join(" ", Model.Classes)" id="@Model.ID" title="@Model.Title" rows="@Model.Rows" @(Model.IsDisabled ? "disabled" : "")>@Html.Raw(Model.Text)</textarea>

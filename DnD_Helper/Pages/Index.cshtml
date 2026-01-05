@@ -1,0 +1,58 @@
+﻿@page
+@using dnd_helper.Pages.Shared.Components.Models
+@model IndexModel
+@{
+    List<Card> cards = new List<Card>
+    {
+        new Card { 
+            Classes = new Card.CardClasses
+            {
+                ImageClasses = new[] { "card-img-top", "p-4" },
+                LinkClasses = new[] { "btn", "btn-primary" },
+                Classes = new[] { "w-100" }
+            }, 
+            CardImage = new Card.Image 
+            { 
+                ImageName = "5e Logo", 
+                ImagePath = "/icons/5e-logo.svg" 
+            }, 
+            CardBody = new Card.Body 
+            { 
+                Title = "5e Loot Converter for Discord", 
+                Text = "", 
+                Link = "Go to >", 
+                LinkUrl = "/5eLootConverter" 
+            } 
+        },
+        new Card {
+            Classes = new Card.CardClasses
+            {
+                ImageClasses = new[] { "card-img-top", "p-4" },
+                LinkClasses = new[] { "btn", "btn-primary" }
+            },
+            CardImage = new Card.Image
+            {
+                ImageName = "5e Logo",
+                ImagePath = "/icons/potions.svg"
+            },
+            CardBody = new Card.Body
+            {
+                Title = "Random Potions List",
+                Text = "",
+                Link = "Go to >",
+                LinkUrl = "/Randomizer/Potions"
+            }
+        }
+    };
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (Card card in cards)
+        {
+            <div class="col-12 col-md-4 col-lg-3 d-flex align-items-stretch mb-3">
+                @await Html.PartialAsync("Components/_Card", card)
+            </div>
+        }
+    </div>
+</div>

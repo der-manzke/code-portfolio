@@ -1,0 +1,67 @@
+﻿@page
+@using dnd_helper.Pages.Shared.Components.Models
+@model dnd_helper.Pages._5eLootConverterModel
+@{
+    Button formSubmit = new Button() { 
+        ButtonType = "Input", 
+        Classes = new[] { "btn-primary" }, 
+        IsDisabled = false, 
+        Type = "submit", 
+        Value = "Generate" 
+    };
+    Button copyText = new Button() { 
+        ButtonType = "Button", 
+        Classes = new[] { "btn-primary", "mb-3", "float-end" }, 
+        IsDisabled = false, 
+        Type = "button", 
+        Value = "Copy", 
+        OnClick = "navigator.clipboard.writeText($('#discordReturn').val());"
+    };
+
+    TextBox discordText = new TextBox() { 
+        ID = "discordReturn",
+        Classes = new[] { "mb-3" },
+        Rows = 25, 
+        Title = "Discord Text",
+        Text = (ViewData["DiscordText"]?.ToString() ?? string.Empty),
+        IsDisabled = true
+    };
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>5e Loot Converter for Discord</h2>
+            <p>
+                Here you can upload the json file you get from the <a href="https://5e.tools/lootgen.html" target="_blank">5e.tools Loot Generator</a>.<br/>
+                You will get the loot formated to a nice Discord message.
+            </p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3 col-12 col-md-6 col-xl-6">
+                <label asp-for="Upload" class="form-label h4">File Upload</label>
+                <input type="file" asp-for="Upload" class="form-control" />
+            </div>
+            <div class="col-12 col-md-6 col-xl-6">
+                @await Html.PartialAsync("Components/_Button", formSubmit)
+            </div>
+        </form>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-12">
+            <label class="form-label h4">Text for Discord</label>
+            @await Html.PartialAsync("Components/_Button", copyText)
+        </div>
+        <div class="col-12">
+            @await Html.PartialAsync("Components/_Textbox", discordText)
+        </div>
+    </div>
+</div>

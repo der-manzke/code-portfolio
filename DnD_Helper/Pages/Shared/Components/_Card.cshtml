@@ -1,0 +1,26 @@
+﻿@model dnd_helper.Pages.Shared.Components.Models.Card
+
+
+<div class="card @String.Join(" ", Model.Classes.Classes)">
+    @if (Model.CardImage != null)
+    {
+        <img src="@Model.CardImage.ImagePath" class="@String.Join(" ", Model.Classes.ImageClasses)" alt="@Model.CardImage.ImageName">
+    }
+    @if (Model.CardBody != null)
+    {
+        <div class="card-body @String.Join(" ", Model.Classes.BodyClasses)">
+            @if (!string.IsNullOrEmpty(Model.CardBody.Title))
+            {
+                <h5 class="card-title @String.Join(" ", Model.Classes.TitleClasses)">@Model.CardBody.Title</h5>
+            }
+            @if (!string.IsNullOrEmpty(Model.CardBody.Text))
+            {
+                <p class="card-text @String.Join(" ", Model.Classes.TextClasses)">@Html.Raw(Model.CardBody.Text)</p>
+            }
+            @if (!string.IsNullOrEmpty(Model.CardBody.Link) && !string.IsNullOrEmpty(Model.CardBody.LinkUrl))
+            {
+                <a href="@Model.CardBody.LinkUrl" class="@String.Join(" ", Model.Classes.LinkClasses)">@Model.CardBody.Link</a>
+            }
+        </div>
+    }
+</div>

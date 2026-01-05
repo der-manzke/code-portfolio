@@ -1,0 +1,13 @@
+﻿@model Pages.Shared.Components.Models.Button
+@if (Model.ButtonType == "Link")
+{
+    <a href="@Model.Link" class="btn @String.Join(" ", Model.Classes)" role="@Model.Type" title="@Model.Value" @(Model.IsDisabled ? "disabled" : "") @(string.IsNullOrEmpty(Model.OnClick) ? "" : $"onClick={Model.OnClick}")>@Model.Value</a>
+}
+@if (Model.ButtonType == "Button")
+{
+    <buton class="btn @String.Join(" ", Model.Classes)" type="@Model.Type" @(Model.IsDisabled ? "disabled" : "") @(string.IsNullOrEmpty(Model.OnClick) ? "" : $"onClick={Model.OnClick}")>@Model.Value</buton>
+}
+@if (Model.ButtonType == "Input")
+{
+    <input class="btn @String.Join(" ", Model.Classes)" type="@Model.Type" value="@Model.Value" @(Model.IsDisabled ? "disabled" : "") @(string.IsNullOrEmpty(Model.OnClick) ? "" : $"onClick={Model.OnClick}") />
+}

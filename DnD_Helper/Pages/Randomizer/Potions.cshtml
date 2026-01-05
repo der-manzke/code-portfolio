@@ -1,0 +1,94 @@
+﻿@page
+@using dnd_helper.Pages.Shared.Components.Models
+@model dnd_helper.Pages.Randomizer.PotionsModel
+@{
+    Button formSubmit = new Button() 
+            { 
+                ButtonType = "Input", 
+                Classes = new[] { "btn-primary", "mb-3" }, 
+                Value = "Power Word: Random", 
+                Type = "submit" 
+            };
+    Button copyText = new Button()
+            {
+                ButtonType = "Button",
+                Classes = new[] { "btn-primary", "mb-3", "float-end" },
+                IsDisabled = false,
+                Type = "button",
+                Value = "Copy",
+                OnClick = "navigator.clipboard.writeText($('#discordReturn').val());"
+            };
+
+    TextBox discordText = new TextBox()
+            {
+                ID = "discordReturn",
+                Classes = new[] { "mb-3" },
+                Rows = 25,
+                Title = "Discord Text",
+                Text = (ViewData["DiscordText"]?.ToString() ?? string.Empty),
+                IsDisabled = true
+            };
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Potion Randomizer</h2>
+            <p>
+                Generate a list of random potions from all source books. <br />
+                Common potions will be taken from the percent you don't enter. <br />
+                If you dont enter a value into a category, the category will be ignored.
+            </p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-3">
+                        <label asp-for="amount_potions" class="form-label">Amount of Potions</label>
+                        <input asp-for="amount_potions" name="amount_potions" type="number" class="form-control noControls" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-3">
+                        <label asp-for="uncommon_potion" class="form-label">% of Uncommon Potions</label>
+                        <input asp-for="uncommon_potion" name="uncommon_potion" type="number" class="form-control noControls" value="" />
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label asp-for="rare_potion" class="form-label">% of Rare Potions</label>
+                        <input asp-for="rare_potion" name="rare_potion" type="number" class="form-control noControls" value="" />
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label asp-for="veryRare_potion" class="form-label">% of Very Rare Potions</label>
+                        <input asp-for="veryRare_potion" name="veryRare_potion" type="number" class="form-control noControls" value="" />
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label asp-for="legendary_potion" class="form-label">% of Legendary Potions</label>
+                        <input asp-for="legendary_potion" name="legendary_potion" type="number" class="form-control noControls" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3">
+                        @await Html.PartialAsync("Components/_Button", formSubmit)
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-12">
+            <label class="form-label h4">Text for Discord</label>
+            @await Html.PartialAsync("Components/_Button", copyText)
+        </div>
+        <div class="col-12">
+            @await Html.PartialAsync("Components/_Textbox", discordText)
+        </div>
+    </div>
+</div>

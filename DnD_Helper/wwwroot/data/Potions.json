@@ -1,0 +1,297 @@
+[
+  {
+    "rarity": "common",
+    "name": "Potion of Climbing",
+    "value": "180"
+  },
+  {
+    "rarity": "common",
+    "name": "Potion of Comprehension",
+    "value": "80"
+  },
+  {
+    "rarity": "common",
+    "name": "Potion of Healing",
+    "value": "50"
+  },
+  {
+    "rarity": "common",
+    "name": "Potion of Watchful Rest",
+    "value": "180"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Blood of the Lycanthrope Antidote",
+    "value": "250"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Bottled Breath",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Mummy Rot Antidote",
+    "value": "250"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Oil of Slipperiness",
+    "value": "250"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Philter of Love",
+    "value": "90"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Acid Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Advantage",
+    "value": "180"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Animal Friendship",
+    "value": "200"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Cold Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Fire Breath",
+    "value": "180"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Fire Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Force Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Growth",
+    "value": "270"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Healing (Greater)",
+    "value": "150"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Hill Giant Strength",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Lightning Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Necrotic Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Poison",
+    "value": "150"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Poison Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Polychromy",
+    "value": "180"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Psionic Fortitude",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Psychic Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Radiant Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Thunder Resistance",
+    "value": "300"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Potion of Water Breathing",
+    "value": "180"
+  },
+  {
+    "rarity": "uncommon",
+    "name": "Thessaltoxin Antidote",
+    "value": "250"
+  },
+  {
+    "rarity": "rare",
+    "name": "Elixir of Health",
+    "value": "120"
+  },
+  {
+    "rarity": "rare",
+    "name": "Oil of Etherealness",
+    "value": "1920"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Aqueous Form",
+    "value": "500"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Clairvoyance",
+    "value": "960"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Diminution",
+    "value": "400"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Fire Giant Strength",
+    "value": "1200"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Frost Giant Strength",
+    "value": "650"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Gaseous Form",
+    "value": "400"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Healing (Superior)",
+    "value": "450"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Heroism",
+    "value": "500"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Invulnerability",
+    "value": "3840"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Maximum Power",
+    "value": "900"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Mind Control (Beast)",
+    "value": "1600"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Mind Control (Humanoid)",
+    "value": "2500"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Mind Reading",
+    "value": "1000"
+  },
+  {
+    "rarity": "rare",
+    "name": "Potion of Stone Giant Strength",
+    "value": "650"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Oil of Sharpness",
+    "value": "2200"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Cloud Giant Strength",
+    "value": "1800"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Flying",
+    "value": "800"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Healing (Supreme)",
+    "value": "1450"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Invisibility",
+    "value": "300"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Longevity",
+    "value": "9000"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Mind Control (Monster)",
+    "value": "6000"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Possibility",
+    "value": "8000"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Speed",
+    "value": "400"
+  },
+  {
+    "rarity": "very_rare",
+    "name": "Potion of Vitality",
+    "value": "960"
+  },
+  {
+    "rarity": "legendary",
+    "name": "Potion of Dragon's Majesty",
+    "value": "23000"
+  },
+  {
+    "rarity": "legendary",
+    "name": "Potion of Giant Size",
+    "value": "11000"
+  },
+  {
+    "rarity": "legendary",
+    "name": "Potion of Storm Giant Strength",
+    "value": "8000"
+  }
+]

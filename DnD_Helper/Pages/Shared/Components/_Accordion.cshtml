@@ -1,0 +1,20 @@
+﻿@using dnd_helper.Pages.Shared.Components.Models
+@model Pages.Shared.Components.Models.Accordion;
+
+<div class="accordion @String.Join(" ", Model.Classes)" id="@Model.ID">
+    @foreach (Accordion.Element element in Model.Elements)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button @(element.IsExpanded? "": "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#@element.ID" aria-expanded="@element.IsExpanded" aria-controls="@element.ID">
+                    @element.Title
+                </button>
+            </h2>
+            <div id="@element.ID" class="accordion-collapse collapse @(element.IsExpanded? "show": "")" data-bs-parent="#@Model.ID">
+                <div class="accordion-body">
+                    @Html.Raw(element.Content)
+                </div>
+            </div>
+        </div>
+    }
+</div>
