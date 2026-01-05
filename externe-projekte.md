@@ -6,4 +6,4 @@ Da der Code an dieser Stelle repetetiv ist, wurde er aus Speichergründen nicht 
 # Projekte
 
 - https://flotterplotter.de
-- https://chris-weißgärber.de (aktuell im Aufbau)
+- https://chris-weißgärber.de
